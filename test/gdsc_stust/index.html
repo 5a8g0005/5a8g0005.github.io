@@ -1,0 +1,282 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title>Google 學生開發者社群 STUST</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <link rel="stylesheet" href="https://code.getmdl.io/1.3.0/material.deep_purple-indigo.min.css" />
+    <link rel=icon href="src/web-icon.png" sizes="16x16" type="image/png">
+    <script defer src="https://code.getmdl.io/1.3.0/material.min.js"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#683cb8">
+    <meta name="description" content="GDSC STUST是一個面向對 Google 開發技術充滿熱情的大專校院和研究所學生社群。
+我們的目標是讓多樣的開發技巧在日常生活中活學活用！
+這裡是一個歡樂的技術交流市集，歡迎初學者和高手一同參與。
+透過工作坊、活動、講座，我們匯聚各背景學生，深入探討技術、獲得新技能、建立解決方案並拓展人脈。歡迎加入，一起體驗科技的樂趣！
+">
+    <meta property="og:title" content="Google 學生開發者社群 STUST" />
+    <meta property="og:image" content="src/web-icon.png" />
+    <meta property="og:description" content="GDSC STUST是一個面向對 Google 開發技術充滿熱情的大專校院和研究所學生社群。
+我們的目標是讓多樣的開發技巧在日常生活中活學活用！
+這裡是一個歡樂的技術交流市集，歡迎初學者和高手一同參與。
+透過工作坊、活動、講座，我們匯聚各背景學生，深入探討技術、獲得新技能、建立解決方案並拓展人脈。歡迎加入，一起體驗科技的樂趣！" />
+    <script type="application/ld+json">
+        {
+            "@context": "https://schema.org",
+            "@type": "Organization",
+            "url": "https://gdsc-stust.github.io",
+            "logo": "https://gdsc-stust.github.io/src/web-icon.png"
+        }
+    </script>
+
+    <style type="text/css">
+        @import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
+        body {
+            background-image: url("src/web-bg.png");
+            background-size:cover;
+            font-family: "Roboto","PingFang TC", AppleGothic, "微軟正黑體", "Microsoft JhengHei";
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+        }
+
+        .demo-card-square.mdl-card {
+            width: 350px;
+            height: 650px;
+        }
+
+        .demo-card-square > .mdl-card__title {
+            color: #FFF;
+        }
+        ::-webkit-scrollbar {
+            width: 0px;
+        }
+    </style>
+
+
+    <script>
+        // 檢查User Agent
+        var userAgent = window.navigator.userAgent;
+        if (userAgent.indexOf("MSIE") !== -1 || userAgent.indexOf("Trident") !== -1 || userAgent.indexOf("Edge") !== -1 || userAgent.indexOf("Firefox") !== -1 || userAgent.indexOf("FB") !== -1 || userAgent.indexOf("Instagram") !== -1 || userAgent.indexOf("Line") !== -1) {
+            alert("我們發現您使用的是不相容或過時的瀏覽器。\n為確保使用體驗，建議使用下列瀏覽器進行瀏覽:\n\n- Safari\n- Google Chrome\n- Microsoft Edge (版本79以上)\n- Brave\n- 其他基於 Chromium 打造的瀏覽器");
+        }
+
+
+
+
+        window.addEventListener('resize', function () {
+            init()
+        });
+
+        // 偵測用戶旋轉裝置
+        window.addEventListener("orientationchange", function() {
+            // 當設備方向變化時執行的操作
+            if (window.orientation === 90 || window.orientation === -90) {
+                // 橫向模式 (landscape)
+                location.reload()
+            } else {
+                // 直立模式 (portrait)
+                location.reload()
+            }
+        });
+
+        window.onload = function(){
+            init()
+        }
+
+        function init() {
+            //alert("使用者代理:"+userAgent+"\n高度"+innerHeight+"\n寬度"+innerWidth);
+
+            // Light Mode
+            document.querySelector('body').style = 'background-color: #eeeeee;color: #000000;font-family: "Roboto","PingFang TC", AppleGothic, "微軟正黑體", "Microsoft JhengHei";';
+
+            // if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+            //     //Dark Mode
+            //     document.querySelector('body').style='background-color: #000000;color: #FFFFFF;font-family: "Roboto","PingFang TC", AppleGothic, "微軟正黑體", "Microsoft JhengHei";';
+            // } else {
+            //     //Light Mode
+            //     document.querySelector('body').style='background-color: #eeeeee;color: #000000;font-family: "Roboto","PingFang TC", AppleGothic, "微軟正黑體", "Microsoft JhengHei";';
+            // }
+
+
+            if (window.innerWidth >= window.innerHeight && window.innerWidth >1024 && !/Android|iPhone|iPod/i.test(userAgent)) {
+                // Mac, PC
+                document.getElementById('mobile_div').style.display = "none";
+                document.getElementById('pc_div').style.display = "inline";
+                document.getElementById('pc_footer').style.display = "inline";
+            } else {
+                // Mobile, PC(窄視窗), Mac(窄視窗)
+                document.getElementById('mobile_div').style.display = "inline";
+                document.getElementById('pc_div').style.display = "none";
+                if ((userAgent.includes("Macintosh") && window.innerWidth > 430)||(userAgent.includes("Android") && window.innerWidth > 500)||userAgent.includes("iPad")||userAgent.includes("Windows")) {
+                    //iPad, Android Tab, Galaxy Z Fold Series, PC(窄視窗), Mac(窄視窗)
+                    document.getElementById('card1_phone').style.cssText = 'alignment: center; width: 460px; height: 700px;';
+                    document.getElementById('card2_title').style.width = "460px";
+                    document.getElementById('card2_content').style.width = "380px";
+                    document.getElementById('pc_footer').style.display = "inline";
+                }
+                else{
+                    //iPhone, iPod, Android Phone
+                    document.getElementById('card2_title').style.width = "350px";
+                    document.getElementById('card2_content').style.width = "250px";
+                    document.getElementById('mobile_footer').style.display = "inline";
+                }
+            }
+            document.querySelector('body').style.display = "inline";
+        }
+    </script>
+
+</head>
+
+<body style="visibility:hidden;"><center>
+    <div id="pc_div" style="display: none">
+        <header class="mdl-layout__header" style="position: sticky;top:0;">
+            <div class="mdl-layout__header-row">
+                <!-- Title -->
+                <span class="mdl-layout-title"><a class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect" style="font-size:large;font-weight: bold; color:#FFF;text-transform:capitalize" href="https://gdsc-stust.github.io">
+                Google 學生開發者社群 STUST
+            </a></span>
+                <!-- Add spacer, to align navigation to the right -->
+                <div class="mdl-layout-spacer"></div>
+                <!-- Navigation. We hide it in small screens. -->
+                <nav class="mdl-navigation mdl-layout--large-screen-only">
+                    <a class="mdl-navigation__link" href="https://forms.gle/qheEm3kdsrFnQMpu5" style="font-size: 16px" target="_blank">核心成員(幹部)報名表</a>
+                </nav>
+                <nav class="mdl-navigation mdl-layout--large-screen-only">
+                    <a class="mdl-navigation__link" href="https://www.youtube.com/@gdsc-stust" style="font-size: 16px" target="_blank">Youtube 頻道</a>
+                </nav>
+                <nav class="mdl-navigation mdl-layout--large-screen-only">
+                    <a class="mdl-navigation__link" href="https://docs.google.com/document/d/e/2PACX-1vR4uLYo6rCI3i9WC15Mv8kIT-UkrQELTjBWuCPKKnh7ONylXna1AYCDolWAnAk8nM8hKHTJ9kiMwO5-/pub" style="font-size: 16px" target="_blank">社群守則</a>
+                </nav>
+                <nav class="mdl-navigation mdl-layout--large-screen-only">
+                    <a class="mdl-navigation__link" href="https://gdsc.community.dev/southern-taiwan-university-of-science-and-technology/" style="font-size: 16px" target="_blank">關於我們</a>
+                </nav>
+            </div>
+        </header><br><br>
+        <!--        內容從這裡開始        -->
+        <div class="demo-card-square mdl-card mdl-shadow--2dp" style="alignment: center ; width:460px;height:700px" id="card1">
+            <div class="mdl-card__title mdl-card--expand"
+                 style="background: url('src/web-icon.png') center no-repeat #FFFFFFFF;background-size:cover">
+            </div>
+            <div class="mdl-card__supporting-text">
+                <h2 id="card1_title" class="mdl-card__title-text" style="color:#000;font-size: x-large;font-weight: bold" >Google 學生開發者社群 STUST</h2>
+                <br><p id="card1_message" style="text-align: left;color:#000;font-size: 16px;">
+                GDSC是面向學生 Google Developers 的社群，對 Google 開發技術感興趣，有志於成為開發人員的大專校院或研究所學生組成。<br><br>
+                我們的目標是一起玩轉多樣的開發技巧並活學活用在我們的日常生活中！
+                <br><br>
+                歡迎追蹤我們的Instagram，接收最新消息<br>
+                如有疑問歡迎使用LINE與我們聯絡！<br>
+                我們非常期待你的加入唷😉
+            </p>
+            </div>
+            <div class="mdl-card__actions mdl-card--border" >
+                <a class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect" style="font-weight: bold;font-size: 16px;" href="https://forms.gle/TB4Hi536DRoDWefc6" target="_blank">
+                    立刻報名
+                </a>
+                <a class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect" style="font-weight: bold;font-size: 16px;text-transform: capitalize" href="https://instagram.com/gdsc_stust" target="_blank">
+                    Instagram
+                </a>
+                <a class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect" style="font-weight: bold;font-size: 16px;" href="https://lin.ee/j5ETXKB" target="_blank">
+                    LINE
+                </a>
+            </div>
+        </div>
+        <!--    <table class="mdl-data-table mdl-js-data-table mdl-data-table mdl-shadow&#45;&#45;2dp" id="card2">-->
+        <!--        <thead>-->
+        <!--        <tr>-->
+        <!--            <th style="text-align: left;color:#000;font-size: 16px;" id="card2_title"  width="460px">相關連結</th>-->
+        <!--        </tr>-->
+        <!--        </thead>-->
+        <!--        <tbody width="460px">-->
+        <!--        <tr>-->
+        <!--            <td style="text-align:center" style="width:100%" id="card2_td">-->
+        <!--                <a class="mdl-button mdl-button&#45;&#45;colored mdl-js-button mdl-js-ripple-effect" style="font-size: 16px;font-weight: bold;width:90%" href="https://docs.google.com/document/d/e/2PACX-1vR4uLYo6rCI3i9WC15Mv8kIT-UkrQELTjBWuCPKKnh7ONylXna1AYCDolWAnAk8nM8hKHTJ9kiMwO5-/pub" target="_blank" id="card2_content">社群守則</a>-->
+        <!--            </td>-->
+        <!--        </tr>-->
+        <!--        <tr>-->
+        <!--            <td style="text-align:center" style="width:100%" id="card2_td">-->
+        <!--                <a class="mdl-button mdl-button&#45;&#45;colored mdl-js-button mdl-js-ripple-effect" style="font-size: 16px;font-weight: bold;width:90%" href="https://gdsc.community.dev/southern-taiwan-university-of-science-and-technology/" target="_blank" id="card2_content">關於我們</a>-->
+        <!--            </td>-->
+        <!--        </tr>-->
+        <!--        </tbody>-->
+        <!--    </table>-->
+
+    </div>
+
+    <div id="mobile_div" style="display: none">
+        <div id="title_bar" style="height: 50px;background-color: #683cb8;color: #FFFFFF;;font-size: 16px;font-weight: bold ;position: sticky;top:0;z-index: 100">
+            <div style="height: 8px"></div>
+            <span class="mdl-layout-title"><a class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect" style="font-size:large;font-weight: bold; color:#FFF;text-transform:capitalize" href="https://gdsc-stust.github.io" target="">
+                Google 學生開發者社群 STUST
+            </a></span>
+        </div><div style="height: 10px"></div>
+        <!--        <img src="https://avatars.githubusercontent.com/u/143670650" width="200px" height="200px"/>-->
+        <br>
+        <!--        內容從這裡開始        -->
+        <div class="demo-card-square mdl-card mdl-shadow--2dp" style="alignment: center" id="card1_phone">
+            <div class="mdl-card__title mdl-card--expand"
+                 style="background: url('src/web-icon.png') center no-repeat #FFFFFFFF; background-size:cover">
+            </div>
+            <div class="mdl-card__supporting-text">
+                <h3 id="card1_title" class="mdl-card__title-text" style="color:#000;font-size: x-large;font-weight: bold" >Google 學生開發者社群 STUST</h3><br>
+                <p id="card1_message" style="text-align: left;color:#000;font-size: 16px;">
+                    GDSC是面向學生 Google Developers 的社群，對 Google 開發技術感興趣，有志於成為開發人員的大專校院或研究所學生組成。<br><br>
+                    我們的目標是一起玩轉多樣的開發技巧並活學活用在我們的日常生活中！
+                    <br><br>
+                    歡迎追蹤我們的Instagram，接收最新消息<br>
+                    如有疑問歡迎使用LINE與我們聯絡！<br>
+                    我們非常期待你的加入唷😉
+                </p>
+            </div>
+            <div class="mdl-card__actions mdl-card--border" >
+                <a class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect" style="font-weight: bold;font-size: 16px;" href="https://forms.gle/TB4Hi536DRoDWefc6" target="_blank">
+                    立刻報名
+                </a>
+                <a class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect" style="font-weight: bold;font-size: 16px;text-transform: capitalize" href="https://instagram.com/gdsc_stust" target="_blank">
+                    Instagram
+                </a>
+                <a class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect" style="font-weight: bold;font-size: 16px;" href="https://lin.ee/j5ETXKB" target="_blank">
+                    LINE
+                </a>
+            </div>
+        </div>
+        <br>
+        <table class="mdl-data-table mdl-js-data-table mdl-data-table mdl-shadow--2dp" id="card2">
+            <thead>
+            <tr>
+                <th style="text-align: left;color:#000;font-size: 16px;" id="card2_title">相關連結</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <td style="text-align:center" style="width:100%" id="card2_td">
+                    <a class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect" style="font-size: 16px;font-weight: bold;width:90%;text-transform: capitalize" href="https://forms.gle/qheEm3kdsrFnQMpu5" target="_blank" id="card2_content">核心成員(幹部)報名表</a>
+                </td>
+            </tr>
+            <tr>
+                <td style="text-align:center" style="width:100%" id="card2_td">
+                    <a class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect" style="font-size: 16px;font-weight: bold;width:90%;text-transform: capitalize" href="https://m.youtube.com/@gdsc-stust" target="_blank" id="card2_content">Youtube 頻道</a>
+                </td>
+            </tr>
+            <tr>
+                <td style="text-align:center" style="width:100%" id="card2_td">
+                    <a class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect" style="font-size: 16px;font-weight: bold;width:90%" href="https://docs.google.com/document/d/e/2PACX-1vR4uLYo6rCI3i9WC15Mv8kIT-UkrQELTjBWuCPKKnh7ONylXna1AYCDolWAnAk8nM8hKHTJ9kiMwO5-/pub" target="_blank" id="card2_content">社群守則</a>
+                </td>
+            </tr>
+            <tr>
+                <td style="text-align:center" style="width:100%" id="card2_td">
+                    <a class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect" style="font-size: 16px;font-weight: bold;width:90%" href="https://gdsc.community.dev/southern-taiwan-university-of-science-and-technology/" target="_blank" id="card2_content">關於我們</a>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+
+
+
+    </div>
+    <br>
+    <span id="pc_footer" style="display: none"><a href="https://youtu.be/4X6zLMYE8Wc" target="_blank" title="什麼是GDSC?"><img class="mdl-data-table mdl-js-data-table mdl-data-table mdl-shadow--2dp" src="src/video-preview_what-is.png" style="width: 460px"></a><br><br>本頁面由 Google 學生開發者社群 STUST 2023 Core-Team 製作 😊</span>
+    <span id="mobile_footer" style="display: none"><a href="https://youtu.be/4X6zLMYE8Wc" target="_blank" title="什麼是GDSC?"><img class="mdl-data-table mdl-js-data-table mdl-data-table mdl-shadow--2dp" src="src/video-preview_what-is.png" style="width: 350px"></a><br><br>本頁面由 GDSC STUST 2023 Core-Team 製作 😊</span>
+</center>
+<div style="height: 20px"></div>
+</body>
+</html>
